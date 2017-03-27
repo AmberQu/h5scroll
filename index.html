@@ -17,6 +17,8 @@
     
 </body>
 <script>
+    // 第一个参数，任意祖先容器，第二个参数，滚动的主体
+    $.smartScroll( container, selectorScrollable );
     $.smartScroll = function(container, selectorScrollable) {
     // 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
     if (!selectorScrollable || container.data('isBindScroll')) {
@@ -35,8 +37,9 @@
     // 事件处理
     container.on({
         touchstart: function (event) {
-            var events = event.touches[0] || event;
-            
+            // var events = event.touches[0] || event;
+            // 注意此处，可能jquery对象没有直接touches方法而报错或无效
+            var events = event.originalEvent.targetTouches[0] || event;
             // 先求得是不是滚动元素或者滚动元素的子元素
             var elTarget = $(event.target);
             
