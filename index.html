@@ -14,7 +14,7 @@
     }
 </style>
 <body>
-    
+    参考张鑫旭老师
 </body>
 <script>
     $.smartScroll = function(container, selectorScrollable) {
@@ -35,7 +35,9 @@
     // 事件处理
     container.on({
         touchstart: function (event) {
-            var events = event.touches[0] || event;
+            // var events = event.touches[0] || event;
+            // 注意此处，可能jquery对象没有直接touches方法而报错或无效
+            var events = event.originalEvent.targetTouches[0] || event;
             
             // 先求得是不是滚动元素或者滚动元素的子元素
             var elTarget = $(event.target);
