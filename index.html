@@ -41,7 +41,9 @@
             // 注意此处，可能jquery对象没有直接touches方法而报错或无效
             var events = event.originalEvent.targetTouches[0] || event;
             // 先求得是不是滚动元素或者滚动元素的子元素
-            var elTarget = $(event.target);
+            // 注意当包含多个子元素的时候，应该直接定义为滚动元素主体，防止出错
+            // var elTarget = $(event.target);
+            var elTarget = selectorScrollable;
             
             if (!elTarget.length) {
                 return;    
