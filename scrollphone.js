@@ -11,9 +11,7 @@ $.smartScroll = function(container, selectorScrollable) {
     container.on({
         touchstart: function (event) {
             var events = event.originalEvent.targetTouches[0] || event;
-            // var elTarget = $(event.target);
-            // 当容器包含多个子元素的情况下,应该直接定义为滑动容器，以后优化
-            var elTarget = selectorScrollable;
+            var elTarget = $(event.target);
             
             if (!elTarget.length) {
                 return;    
